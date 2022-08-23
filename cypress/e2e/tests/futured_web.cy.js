@@ -1,3 +1,5 @@
+import homePage from "../page_objects/home-page"
+
 describe('First Futured Automated Test', () => {
 
   beforeEach(() => {
@@ -5,21 +7,18 @@ describe('First Futured Automated Test', () => {
   })
 
   it('open website', () => {
-    cy.visit('https://www.futured.app/')
+    homePage.openHomePage();
   })
 
   it('accept cookies', () => {
-    cy.get('#CybotCookiebotDialog')
-      .should('be.visible');
-
     cy.get('#CybotCookiebotDialogBodyButtonAccept')
-      .click();
+    .click();
   })
   
   it('open menu and check its items', () => {
 
     cy.get('[class="menu-toggler js-menu-open"]')
-    .should('be.visible')
+    // .should('be.visible')
     .click();
 
     cy.get('.menu-overlay__wrapper__inner')
@@ -42,7 +41,6 @@ describe('First Futured Automated Test', () => {
   it('check if CZ is default language', () => {
 
     cy.get('[class="navigation-main__link"]')
-      .should('be.visible')
       .should('contain', 'Napište nám');
     })
 
@@ -52,29 +50,24 @@ describe('First Futured Automated Test', () => {
       .click();
 
     cy.get('[class="language-switcher "] [class="dropdown"] li:nth-of-type(2)')
-      .click();
-      
-    cy.get('[class="navigation-main__link"]')
-      .should('be.visible');
+    .click();
       
     if (cy.get('[class="language-switcher "] [class="dropdown"]').contains('CZ')) {
       cy.log('Language is still CZ');
 
       cy.get('[class="language-switcher "] [class="dropdown"]')
-        .click();
+      .click();
       
       cy.get('[class="language-switcher "] [class="dropdown"] li:nth-of-type(2)')
-        .click();
+      .click();
     }
   })
 
   it('check if EN set as language', () => {
     cy.get('[class="language-switcher "] [class="dropdown"]')
-      .should('be.visible')
       .contains('EN')
 
     cy.get('[class="navigation-main__link"]')
-      .should('be.visible')
       .should('contain', 'Contact Us');
   })
 })
