@@ -1,9 +1,7 @@
 {
-  "devDependencies": {
-    "cypress": "^10.6.0",
-    "eslint-plugin-cypress": "^2.12.1"
-  },
   "dependencies": {
+    "cypress": "^10.6.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "cypress-match-screenshot": "^1.1.0"
   }
 }

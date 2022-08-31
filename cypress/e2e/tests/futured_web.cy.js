@@ -12,7 +12,8 @@ describe('First Futured Automated Test', () => {
 
   it('accept cookies', () => {
     cy.get('#CybotCookiebotDialogBodyButtonAccept')
-    .click();
+    .click()
+   // .should('not.be.visible');
   })
   
   it('open menu and check its items', () => {
@@ -22,17 +23,24 @@ describe('First Futured Automated Test', () => {
     .click();
 
     cy.get('.menu-overlay__wrapper__inner')
-      .should('be.visible')
-      .should('contain', '01Úvod')
-      .should('contain', '03Vývoj mobilních aplikací')
-      .should('contain', '02Případové studie')
-      .should('contain', '03Vývoj mobilních aplikací')
-      .should('contain', '04Kontakt')
-      .should('contain', '05Kariéra')
-      .should('contain', '06Blog')
-      .should('contain', '07Open-source');
+      .should('have.length', 1)
+      .and('contain', '01Úvod')
+      .and('contain', '03Vývoj mobilních aplikací')
+      .and('contain', '02Případové studie')
+      .and('contain', '03Vývoj mobilních aplikací')
+      .and('contain', '04Kontakt')
+      .and('contain', '05Kariéra')
+      .and('contain', '06Blog')
+      .and('contain', '07Open-source');
+ 
+    cy.get('.menu-overlay__wrapper__inner span[class="inner"]').should(($list) => {
+      expect($list).to.have.length(7)
+      expect($list.eq(0)).to.contain('Úvod')
+      ($list.eq(1)).to.contain('Případové studie')
+      expect($list.eq(2)).to.contain('Vývoj mobilních aplikací')
+      expect($list.eq(6)).to.contain('Open-source')
+    })
   })
-
   it('take screenshot', () => {
     cy.wait(2000)
     cy.matchScreenshot('Menu');
