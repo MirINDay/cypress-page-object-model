@@ -29,7 +29,6 @@ describe('First Futured Automated Test', () => {
       .should('contain', '03Vývoj mobilních aplikací')
       .should('contain', '04Kontakt')
       .should('contain', '05Kariéra')
-      .should('contain', '06Blog')
       .should('contain', '07Open-source');
   })
 
