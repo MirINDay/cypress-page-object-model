@@ -9,7 +9,13 @@ class ContactPage {
  chooseMessageSubject(choice) {
     cy.get('.select-styled').click()
     cy.contains(choice).click()
-}
+ }
+
+ typeMessage(message) {
+    cy.get('textarea')
+      .click()
+      .type(message)
+ }
 }
 
 export default new ContactPage();
