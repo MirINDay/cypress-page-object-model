@@ -14,6 +14,8 @@ describe('Futured web', () => {
 
   })
 
+  // Komentar hahaha
+
   it('opens menu and checks its items', () => {
 
       cy.contains('Menu')
