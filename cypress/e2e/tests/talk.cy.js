@@ -10,5 +10,6 @@ homePage.openWebsite();
 homePage.clickCookies();
  homePage.clickMenu();
  menuPage.clickContact();
+ contactUs.clickContactUs()
   })
 })
